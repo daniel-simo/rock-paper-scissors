@@ -1,1 +1,2 @@
 # rock-paper-scissors
+here i am going to create a simple implement of the classic game "rock, paper, scissors" at first it is going to be just played within the console using JavaScript, working with functions and variables etc. But i am later going to revisit this project and add a Graphical User Interface with buttons and text. So by the end product it will showcase my skills with HTML, CSS, Javascript.
