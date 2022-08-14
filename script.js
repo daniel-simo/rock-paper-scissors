@@ -1,17 +1,21 @@
 const choices = ['rock', 'paper', 'scissors'];
 
 function game(){
-    playRound();
+    for(let i = 0; i <= 4; i++){
+        playRound();
+    }
 
 }
 
 function playRound(){
     const playerSelcetion = getPlayerChoice();
     const computerSelection = getComputerChoice();
+    const winner = checkWinner(playerSelcetion,computerSelection);
+    
 }
 
 function getPlayerChoice () {
-   let input = prompt('type rock, paper or scissors');
+   let input = prompt('Type Rock, Paper or Scissors');
    while(input == null){
     input = prompt('Type Rock, Paper or Scissors')
    }
@@ -19,7 +23,9 @@ function getPlayerChoice () {
    input = input.toLowerCase();
    let check = validateInput(input);
    while (check == false){
-   input = prompt('Type Rock, Paper or Scissors, but caps does not matter');
+   input = prompt(
+    'Type Rock, Paper or Scissors, but caps does not matter'
+    );
    while(input == null){
     input = prompt('Type Rock, Paper or Scissors')
    };
@@ -27,7 +33,7 @@ function getPlayerChoice () {
    input = input.toLowerCase();
    check = validateInput(input);
    }
-   //console.log(input)
+   return input;
 }
 
 function getComputerChoice() {
@@ -37,5 +43,20 @@ function getComputerChoice() {
 function validateInput(choice){
     return choices.includes(choice);
      //checks if input is correct
+}
+
+function checkWinner(choiceP, choiceC){
+    console.log(choiceP,choiceC)
+    if(choiceP === choiceC){
+        return 'Its a Tie!';
+    } else if(
+        (choiceP === 'rock' && choiceC =='scissors') || 
+        (choiceP === 'paper' && choiceC =='rock') || 
+        (choiceP === 'scissors' && choiceC =='paper') 
+        ){
+        return 'Player Won';
+    } else{
+        return 'Computer Won'
+    }
 }
     game()
