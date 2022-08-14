@@ -1,19 +1,19 @@
 const choices = ['rock', 'paper', 'scissors'];
 let winners = [];
 
-function game(){
-    for(let i = 1; i <= 5; i++){
-        playRound();
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        playRound(i);
     }
 logWins();
 }
 
-function playRound(){
+function playRound(round){
     const playerSelcetion = getPlayerChoice();
     const computerSelection = getComputerChoice();
     const winner = checkWinner(playerSelcetion, computerSelection);
     winners.push(winner);
-    logRound(playerSelcetion, computerSelection, winner);
+    logRound(playerSelcetion, computerSelection, winner, round);
 }
 
 function getPlayerChoice () {
@@ -49,29 +49,30 @@ function validateInput(choice){
 
 function checkWinner(choiceP, choiceC){
     if(choiceP === choiceC){
-        return 'Its a Tie!';
+        return 'Tie';
     } else if(
         (choiceP === 'rock' && choiceC =='scissors') || 
         (choiceP === 'paper' && choiceC =='rock') || 
         (choiceP === 'scissors' && choiceC =='paper') 
         ){
-        return 'Player Won';
+        return 'Player';
     } else{
-        return 'Computer Won'
+        return 'Computer'
     }
 }
 
 function logWins(){
-    let playerWins = winners.filter((item) => item == 'Player Wins!').length;
-    let computerWins = winners.filter((item) => item == 'Computer Wins!').length;
+    let playerWins = winners.filter((item) => item == 'Player').length;
+    let computerWins = winners.filter((item) => item == 'Computer').length;
     let ties = winners.filter((item) => item == 'Tie').length;
-    console.log('Results:')
-    console.log('Player Wins:', playerWins)
-    console.log('Computer Wins:', computerWins)
-    console.log('Ties:',ties)
+    console.log('Results:');
+    console.log('Player Wins:', playerWins);
+    console.log('Computer Wins:', computerWins);
+    console.log('Ties:',ties);
 }
 
-function logRound (getPlayerChoice, getComputerChoice, winner){
+function logRound (getPlayerChoice, getComputerChoice, winner, round){
+    console.log('Round:', round);
 console.log("Player Chose:", getPlayerChoice);
 console.log("Computer Chose:", getComputerChoice);
 console.log(winner, "Won the Round");
